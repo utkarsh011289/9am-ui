@@ -21,7 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Provider store={appStore}>
-          <LayoutWrapper children={children} />
+          <LayoutWrapper >
+            {children}
+          </LayoutWrapper>
         </Provider>
          </body>
     </html>
