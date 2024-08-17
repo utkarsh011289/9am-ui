@@ -7,7 +7,7 @@ if( typeof window !== 'undefined' )  {
 // Add a request interceptor
   axios.interceptors.request.use(function (req) {
   // Do something before request is sent
-  req.headers.Authorization=-sessionStorage?.token
+  req.headers.Authorization=sessionStorage?.token
   return req;
 }, function (error) {
   // Do something with request error
