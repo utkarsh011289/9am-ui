@@ -13,6 +13,7 @@ export const Register = () => {
             var dataObj = {
                 "data": data
             }
+            dispatch({type:"LOADER",payload:true})
            const res= await Ajax.sendPostReq( 'std/register', dataObj )
            /* const res = await fetch('https://9am-server-kappa.vercel.app/std/register', {
                 method: 'post',
@@ -35,6 +36,8 @@ export const Register = () => {
         } catch ( ex:any ) {
             console.error(ex);
             alert(ex.message);
+        }finally{
+            dispatch({type:"LOADER",payload:false})
         }
     }
 

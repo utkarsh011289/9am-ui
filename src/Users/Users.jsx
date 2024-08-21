@@ -62,6 +62,8 @@ export const Users = () => {
     const handleDelete =async(row) => {
         const bool= confirm("R U Sure...")
         if(bool){
+            try{
+            dispatch({type:"LOADER",payload:true})
         const res= await Ajax.sendDeleteReq( `std/delete-std/${row?._id}`)
            
             const { acknowledged, deletedCount}= res?.data;
@@ -73,8 +75,14 @@ export const Users = () => {
             else{
                 alert("fail")
             }
+        
+    }catch(ex){
+
+        }finally{
+            dispatch({type:"LOADER",payload:false})
         }
     }
+}
     return (
         <div>
             <table border="2px" className="table table-bordered">

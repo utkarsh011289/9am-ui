@@ -16,6 +16,7 @@ export const Modal = ( ) => {
             var dataObj = {
                 "data": data
             }
+            dispatch({type:"LOADER",payload:true})
            const res= await Ajax.sendPutReq( `std/update-std?id=${id}`, dataObj )
            /* const res = await fetch('https://9am-server-kappa.vercel.app/std/register', {
                 method: 'post',
@@ -40,6 +41,8 @@ export const Modal = ( ) => {
         } catch ( ex:any ) {
             console.error(ex);
             alert(ex.message);
+        }finally{
+            dispatch({type:"LOADER",payload:false})
         }
     }
 
