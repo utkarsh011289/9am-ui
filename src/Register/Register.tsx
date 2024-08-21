@@ -1,8 +1,10 @@
 "use client"
 import { Ajax } from '@/services/Ajax'
 import React, {useState} from 'react'
+import { useDispatch,UseDispatch } from 'react-redux'
 
 export const Register = () => {
+    const dispatch= useDispatch();
 
     const [data, setData] = useState({})
 
@@ -23,6 +25,7 @@ export const Register = () => {
             const { acknowledged, insertedId }= res?.data;
             if( acknowledged && insertedId )
             {
+                dispatch({type:"GET_STUDENTS"})
                 alert("success")
             }
             else{
@@ -41,7 +44,7 @@ export const Register = () => {
     }
     return (
         <div>
-            <h3>Register</h3>
+           <h3>Register</h3>
             <p>
                 <b>Name:</b><input name="name" onChange={handleChange} />
             </p>
@@ -53,7 +56,7 @@ export const Register = () => {
             </p>
             <p>
                 <button onClick={fnRegister}>register</button>
-            </p>
+            </p> 
         </div>
     )
 }
